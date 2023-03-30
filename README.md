@@ -1,6 +1,6 @@
 # Weather-App
-Trang thời tiết đơn giản
-Chưa có responsive
+-Trang thời tiết đơn giản
+- Chưa có responsive
 
 ## Cài đặt
 

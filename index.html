@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- link font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter&family=Roboto:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+        rel="stylesheet">
+
+    <title>Weather App</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="Img__loader"></div>
+        <div class="main__wrapper hidden">
+            <!-- <figure>
+                <div class="overlay">
+                    
+                    <figcaption class="Caption"></figcaption>
+            </figure> -->
+            <article>
+                <div class="article__wrapper">
+                    <!-- <div class="mutate" style="position: absolute;">
+                        <p class="mutate__cencious">C</p>
+                        <p class="mutate__Fahrenheit">F</p>
+                    </div> -->
+                    <div class="article__content">
+                        <div class="weather_img js__weather__img">
+                        </div>
+                        <div class="temperature">
+                            <p class="number js__value__temperature"></p>
+                            <p class="degree">o</p>
+                        </div>
+                        <p class="date js_DateTime"></p>
+                        <p class="day js__day"><strong></strong></p>
+                        <div class="another">
+                            <div class="another__item">
+                                <img src="./assets/img/wind.png" alt="" class="img__another">
+                                <p class="desc">Wind</p>
+                                <p class="wind--speed item--value"></p>
+                            </div>
+                            <div class="another__item">
+                                <img src="./assets/img/hum.png" alt="" class="img__another">
+                                <p class="desc">hum</p>
+                                <p class="hum--speed item--value"></p>
+                            </div>
+                            <div class="another__item">
+                                <img src="./assets/img/rain.png" alt="" class="img__another">
+                                <p class="desc">Rain</p>
+                                <p class="rain--speed item--value"></p>
+                            </div>
+                        </div>
+                        </p>
+                    </div>
+                    <div class="article_list">
+                        <div class="article_item">
+                            <div class="temp_nextday">
+                                <p class="next__temp">25</p>
+                                <p class="degree">o</p>
+                            </div>
+                            <img src="./assets/img/WeatherIcon - 2-52.png" alt="" class="img__nextday">
+                            <div class="day_time">Mon</div>
+                        </div>
+                        <div class="article_item">
+                            <div class="temp_nextday">
+                                <p class="next__temp">25</p>
+                                <p class="degree">o</p>
+                            </div>
+                            <img src="./assets/img/WeatherIcon - 2-52.png" alt="" class="img__nextday">
+                            <div class="day_time">Tues</div>
+                        </div>
+                        <div class="article_item">
+                            <div class="temp_nextday">
+                                <p class="next__temp">25</p>
+                                <p class="degree">Wed</p>
+                            </div>
+                            <img src="./assets/img/WeatherIcon - 2-52.png" alt="" class="img__nextday">
+                            <div class="day_time">Fri</div>
+                        </div>
+                        <div class="article_item">
+                            <div class="temp_nextday">
+                                <p class="next__temp">25</p>
+                                <p class="degree">o</p>
+                            </div>
+                            <img src="./assets/img/WeatherIcon - 2-52.png" alt="" class="img__nextday">
+                            <div class="day_time">Saturday</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <aside>
+                <div class="overlay">
+                    <div class="address">
+                        <img src="./assets/img/Group 703.png" alt="" class="img__location">
+                        <input type="text" class="desc js__input"></input>
+                        <button type="submit" class="search"><img src="./assets/img/magnifying-glass-solid.svg" alt=""
+                                class="search__img"></button>
+                    </div>
+                    <div class="Good__day">
+                        <div class="item sunrise">
+                            <p class="desc">sunrise</p>
+                            <div class="box_content">
+                                <p class="time__goodsr">17:45 Pm</p>
+                                <img src="./assets/img/Sun.png" alt="" class="img_sunrise__sunset">
+                            </div>
+                        </div>
+                        <div class="item sunset">
+                            <p class="desc">sunset</p>
+                            <div class="box_content">
+                                <p class="time__goodsn">17:45 Pm</p>
+                                <img src="./assets/img/Sun.png" alt="" class="img_sunrise__sunset">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list__other">
+                        <div class="row">
+                            <div class="item">
+                                <p class="desc">Humidity</p>
+                                <p class="value hum--speed"></p>
+                            </div>
+                            <div class="item">
+                                <p class="desc">Chance of Rain</p>
+                                <p class="value rain--speed"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="item">
+                                <p class="desc">Air Quality</p>
+                                <p class="value value__Air">3/10</p>
+                            </div>
+                            <div class="item">
+                                <p class="desc">Wind speed</p>
+                                <p class="value wind--speed"></p>
+                                <img src="./assets/img/Group Wind.png" alt="" class="wind__img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <script src="./assets/js/index.js"></script>
+
+</body>
+
+</html>

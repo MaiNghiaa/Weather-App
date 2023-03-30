@@ -194,6 +194,7 @@ p.day strong {
   color: #ffffff;
   margin-bottom: 26px;
   text-shadow: -1.13852px 1.70778px 0.569258px rgba(0, 0, 0, 0.1);
+  align-items: flex-end;
 }
 
 .day_time {

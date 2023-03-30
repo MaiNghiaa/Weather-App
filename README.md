@@ -1,12 +1,6 @@
 # Weather-App
--Trang thời tiết đơn giản
+- Trang thời tiết đơn giản
 - Chưa có responsive
-
-## Cài đặt
-
-- Clone repository về máy tính của bạn
-- Chạy lệnh `npm install` để cài đặt các gói phụ thuộc
-- Chạy lệnh `npm start` để khởi chạy ứng dụng
 
 ## Các chức năng chính
 - Ứng dụng cung cấp các tính năng sau:
@@ -21,8 +15,14 @@
 - OpenWeather API để lấy dữ liệu thời tiết
 - OpenWeatherMap API để chuyển đổi tọa độ thành địa điểm
 
+## Cài đặt
+
+- Clone repository về máy tính của bạn
+- Chạy lệnh `npm install` để cài đặt các gói phụ thuộc
+- Chạy lệnh `npm start` để khởi chạy ứng dụng
+
 ## Tác giả
 - Tên tác giả: Trung Nghĩa
 - Email: Nghia.mt1505@gmail.com
 
-*Dự án nhỏ này còn sơ sài nhiều bug nếu mọi người xem có những lỗi gì có thể chỉ mình nhé .
+*Dự án nhỏ này còn sơ sài nhiều sai xót .  Mọi người xem và đóng góp thêm ý kiến cho mình nhé.

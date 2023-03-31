@@ -36,7 +36,7 @@ function time() {
 // Cập nhật thời gian sau mỗi 1s
 setInterval(time(), 1000);
 function changeWeatherUI(weather, address) {
-  console.log(weather.sys.sunrise);
+  // console.log(weather.sys.sunrise);
   const temperature = $(".js__value__temperature");
   const weather__img = $(".weather_img");
   const wind = $$(".wind--speed");
@@ -80,25 +80,35 @@ function changeWeatherUI(weather, address) {
   }
 }
 // xử lí vị trí hiện tại của mình
+ischeck = true;
 if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(Postition);
-}
-
-function Postition(Postition) {
-  let latitude = Postition.coords.latitude;
-  let longitude = Postition.coords.longitude;
-  API__Location = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=1eac073ede7042b880834029e3bd0bfe`;
-  Location(API__Location);
+  navigator.geolocation.getCurrentPosition(
+    function (position) {
+      ischeck = true;
+      let latitude = position.coords.latitude;
+      let longitude = position.coords.longitude;
+      API__Location = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=1eac073ede7042b880834029e3bd0bfe`;
+      Location(API__Location);
+    },
+    function (error) {
+      ischeck = false;
+      $(".search-bar").classList.remove("hidden");
+      Img__loader.style.opacity = "0.4";
+      $(".search-btn").addEventListener("click", () => {
+        ischeck = true;
+        $(".search-bar").classList.add("hidden");
+        getWeather($(".input__search").value);
+      });
+    }
+  );
+} else {
+  console.log("Phần mềm của bạn không được hỗ trợ");
 }
 
 async function Location(API_location) {
   const response = await fetch(API_location);
   const data = await response.json();
-  fristrenderweather(data);
-}
-// lấy ra được địa điểm vị trí
-function fristrenderweather(Address) {
-  const city = Address.results[0].components.city;
+  const city = data.results[0].components.city;
   getWeather(city);
 }
 btn_search.addEventListener("click", () => {
@@ -110,17 +120,23 @@ async function getWeather(input) {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=266631f1219df91f82507981d2e12005
   `;
   const urlfor4days = `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${input}&appid=266631f1219df91f82507981d2e12005`;
-  // fetch dữ liệu hiện tại
-  const res = await fetch(url);
-  const weather = await res.json();
+
   // 5 ngày tiếp theo
   // const res2 = await fetch(urlfor4days);
   // const weatherfor4days = await res2.json();
   // console.log(weatherfor4days);
-  const address = input;
-  changeWeatherUI(weather, address);
-  setTimeout(() => {
+
+  // fetch dữ liệu hiện tại
+
+  const res = await fetch(url);
+  // trường hợp thành công
+  if (res.ok) {
+    const weather = await res.json();
+    const address = input;
     Img__loader.classList.add("hidden");
     main__wrapper.classList.remove("hidden");
-  }, 3000);
+    changeWeatherUI(weather, address);
+  } else {
+    // hiển thị popup thông báo
+  }
 }

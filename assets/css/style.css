@@ -1,5 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+/* form search form  */
+.search-bar {
+  z-index: 999999;
+  position: absolute;
+  width: 300px;
+  display: flex;
+  font-size: 20px;
+}
+input[type="search"] {
+  padding: 5px 10px;
+  outline: none;
+  font-size: 16px;
+  color: #000;
+}
 
+button.search-btn {
+  width: 30px;
+  background: #fff;
+  border: 2px solid #9c9c9c;
+}
 * {
   box-sizing: border-box;
   color: #fff;

@@ -80,11 +80,10 @@ function changeWeatherUI(weather, address) {
   }
 }
 // xử lí vị trí hiện tại của mình
-ischeck = true;
+
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
     function (position) {
-      ischeck = true;
       let latitude = position.coords.latitude;
       let longitude = position.coords.longitude;
       API__Location = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=1eac073ede7042b880834029e3bd0bfe`;
@@ -95,7 +94,6 @@ if (navigator.geolocation) {
       $(".search-bar").classList.remove("hidden");
       Img__loader.style.opacity = "0.4";
       $(".search-btn").addEventListener("click", () => {
-        ischeck = true;
         $(".search-bar").classList.add("hidden");
         getWeather($(".input__search").value);
       });

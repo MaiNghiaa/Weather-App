@@ -1,3 +1,5 @@
+// Chọn các phần tử DOM và gán chúng vào các biến để sử dụng dễ dàng
+
 $ = document.querySelector.bind(document);
 $$ = document.querySelectorAll.bind(document);
 const btn_search = $(".search");
@@ -5,11 +7,11 @@ const input = $(".js__input");
 const Img__loader = $(".Img__loader");
 const main__wrapper = $(".main__wrapper");
 const img__location = $(".img__location");
-// Click vào btuong thi focus ra input
+// Khi người dùng click vào hình ảnh địa điểm, trường nhập liệu sẽ được focus
 img__location.addEventListener("click", () => {
   input.focus();
 });
-// Định dạng thời gian
+// Hàm định dạng và hiển thị thời gian và ngày tháng
 function time() {
   // Phần định dạng ngày tháng
   const day = $(".js_day");
@@ -33,10 +35,12 @@ function time() {
     .toString()
     .padStart(2, "0")}:${datetime.getMinutes().toString().padStart(2, "0")}`;
 }
-// Cập nhật thời gian sau mỗi 1s
+// Cập nhật thời gian sau mỗi 1 giây bằng cách gọi hàm `time()` qua `setInterval`
 setInterval(time(), 1000);
+// Hàm này cập nhật giao diện dựa trên dữ liệu thời tiết và địa chỉ được truyền vào
+
 function changeWeatherUI(weather, address) {
-  // console.log(weather.sys.sunrise);
+  console.log(weather, address);
   const temperature = $(".js__value__temperature");
   const weather__img = $(".weather_img");
   const wind = $$(".wind--speed");
@@ -50,6 +54,7 @@ function changeWeatherUI(weather, address) {
   const sunriseMinutes = sunrise.getMinutes().toString().padStart(2, "0");
   const sunsetHours = sunset.getHours().toString().padStart(2, "0");
   const sunsetMinutes = sunset.getMinutes().toString().padStart(2, "0");
+
   if (sunriseHours > 12) {
     time__goodsr.innerHTML = `${sunriseHours}:${sunriseMinutes} Pm`;
   } else {
@@ -80,14 +85,16 @@ function changeWeatherUI(weather, address) {
   }
 }
 // xử lí vị trí hiện tại của mình
+// Lấy vị trí hiện tại của người dùng nếu trình duyệt hỗ trợ geolocation
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
     function (position) {
       let latitude = position.coords.latitude;
       let longitude = position.coords.longitude;
-      API__Location = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=1eac073ede7042b880834029e3bd0bfe`;
-      Location(API__Location);
+      console.log(latitude, longitude);
+      API__Location = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=266631f1219df91f82507981d2e12005`;
+      LocationLocal(API__Location);
     },
     function (error) {
       ischeck = false;
@@ -103,21 +110,28 @@ if (navigator.geolocation) {
   console.log("Phần mềm của bạn không được hỗ trợ");
 }
 
-async function Location(API_location) {
+async function LocationLocal(API_location) {
+  console.log("check");
   const response = await fetch(API_location);
   const data = await response.json();
-  const city = data.results[0].components.city;
+  // console.log(data.name);
+  const city = data.name;
+  // console.log(data);
   getWeather(city);
 }
 btn_search.addEventListener("click", () => {
+  console.log(input.value);
   setInterval(() => {
     getWeather(input.value);
   }, 3000);
 });
+// Hàm xử lý khi người dùng nhấn nút tìm kiếm
+// Hàm lấy dữ liệu thời tiết từ API OpenWeatherMap dựa trên tên thành phố được nhập vào
+
 async function getWeather(input) {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=266631f1219df91f82507981d2e12005
   `;
-  const urlfor4days = `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${input}&appid=266631f1219df91f82507981d2e12005`;
+  // const urlfor4days = `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${input}&appid=266631f1219df91f82507981d2e12005`;
 
   // 5 ngày tiếp theo
   // const res2 = await fetch(urlfor4days);
